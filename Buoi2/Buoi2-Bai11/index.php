@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buổi 2 - Bài 10</title>
+    <title>Buổi 2 - Bài 11</title>
 
-    <style>
+    <STYLE>
         body {
             font-family: Arial, sans-serif;
             background-color: #e0e0e0;
@@ -67,63 +67,65 @@
             color: white; /* Đổi màu chữ cho dễ đọc */
             text-align: center; /* Căn giữa văn bản */
         }
-    </style>
+    </STYLE>
 </head>
 <body>
     <div class="container">
         <form action="" method="POST">
-            <h1>Tính Tiền KARAOKE</h1>
+            <h1>Nhận Dạng Tam Giác</h1>
 
-            <div class="form-group">
-                <label for="startTime">Giờ bắt đầu :</label>
-                <input type="number" name="startTime" id="startTime" min="10" max="24" required>
-            </div>
-
-            <div class="form-group">
-                <label for="endTime">Giờ kết thúc :</label>
-                <input type="number" name="endTime" id="endTime" min="10" max="24" required>
-            </div>
-
-            <div class="form-group">
-                <label for="pay">Tiền thanh toán :</label>
-                <input type="text" name="pay" id="pay" readonly>
+            <div class = "form-group">
+                <label for="Canh1">Cạnh 1 :</label>
+                <input type="number" name="Canh1" id="Canh1" min="1" required>
             </div>
             
-                <input type="submit" value="Tính tiền">
+            <div class = "form-group">
+                <label for="Canh2">Cạnh 2 :</label>
+                <input type="number" name="Canh2" id="Canh2" min="1" required>
+            </div>
+
+            <div class = "form-group">
+                <label for="Canh3">Cạnh 3 :</label>
+                <input type="number" name="Canh3" id="Canh3" min="1" required>
+            </div>
+
+            <div class = "form-group">
+                <label for="result">Loại tam giác :</label>
+                <input type="text" name="result" id="result" readonly>
+            </div>
+
+                <input type="submit" value="Nhận dạng">
         </form>
 
         <?php
             if($_SERVER["REQUEST_METHOD"] == "POST"){
+                $Canh1 = $_POST['Canh1'];
+                $Canh2 = $_POST['Canh2'];
+                $Canh3 = $_POST['Canh3'];
+                $result = $_POST['result'];
 
-                $startTime = $_POST['startTime'];
-                $endTime = $_POST['endTime'];
+                if(($Canh1+$Canh2>$Canh3)&&($Canh1+$Canh3>$Canh2)&&($Canh3+$Canh2>$Canh1)){
+                    if($Canh1==$Canh2 && $Canh2==$Canh3)
+                    {
+                        $result = "Tam giác đều";
+                    }elseif ($Canh1==$Canh2||$Canh1==$Canh3||$Canh2==$Canh3) {
+                        if(($Canh3==$Canh1*sqrt(2))||($Canh2==$Canh3*sqrt(2))||($Canh1==$Canh2*sqrt(2))){
+                            $result = "Tam giác vuông cân";
+                        }else{
+                            $result = "Tam giác vuông";
+                        }
+                        
+                    }else{
+                         $result = "Tam giác thường";
+                    }
 
-                if($startTime >= $endTime){
-                    echo "<script>alert('Giờ kết thúc phải lớn hơn giờ bắt đầu');</script>";
                 }else {
-                    // Khung  giờ và giá tương đương
-                    $morningRate = 20000;
-                    $eveningRate = 45000;
-                    $pay = 0;
-                    // Nếu cả thời gian trong khoảng từ 10h - 17h
-                    if($endTime <= 17){
-                        $pay = ($endTime - $startTime) * $morningRate;
-                    }elseif ($startTime >= 17) {
-                        $pay = ($endTime - $startTime) * $eveningRate;
-                    }
-                    //Nếu thời gian trải qua trong cả 2 khung giờ
-                    else {
-                        $morningHours = 17 - $startTime;
-                        $eveningHours = $endTime - 17;
-
-                        $pay = ($morningHours*$morningRate)+($eveningHours*$eveningRate);
-                    }
+                    echo "<script>alert('3 cạnh không tạo thành 1 tam giác !!!');</script>";
                 }
 
                 echo 
-                
                 "<script>
-                    document.getElementById('pay').value = '$pay';
+                    document.getElementById('result').value = '$result';
                 </script>";
             }
         ?>
@@ -131,5 +133,3 @@
     
 </body>
 </html>
-
-
