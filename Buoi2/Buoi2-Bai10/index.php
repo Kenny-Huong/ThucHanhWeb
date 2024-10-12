@@ -59,6 +59,7 @@
         
 
         h1 {
+            
             background-color: #c63768;
             margin: 0 0 10px 0;
             width: 450px;

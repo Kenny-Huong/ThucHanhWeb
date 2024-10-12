@@ -29,7 +29,8 @@
             background-color: #c63768;
             color: white;
             margin: 20px 0px 0px 0px;
-        }
+            
+        }   
 
         .result{
             width: 400px;

@@ -18,6 +18,7 @@
         .input-group{
             display: flex;
             margin: 10px 0px;
+            
         }
 
         .container{
