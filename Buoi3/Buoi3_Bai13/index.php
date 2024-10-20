@@ -35,7 +35,7 @@
             display: inline-block;
             width: 150px;
         }
-        input[type="text"] {
+        input[type="number"] {
             padding: 5px;
             border: 2px solid #ccc;
             display: inline-block;
@@ -85,6 +85,9 @@
             color: white; /* Đổi màu chữ cho dễ đọc */
             text-align: center; /* Căn giữa văn bản */
         }
+        input#year{
+            width: 50px;
+        }
     </style>
 </head>
 <body>
@@ -92,9 +95,9 @@
         <form action="" method="POST">
             <h1>Tìm Thứ Trong Tuần</h1>
             <label for="">Ngày Tháng Năm :</label>
-            <input type="text" id="day" name="day" min="1" max="31"required>/
-            <input type="text" id="month" name="month" min="1" max="12"required>/
-            <input type="text" id="year" name="year" min="1000" max="9999"required>
+            <input type="number" id="day" name="day" min="1" max="31"required>/
+            <input type="number" id="month" name="month" min="1" max="12"required>/
+            <input type="number" id="year" name="year" min="1970" max="2100"required>
             <button type="submit">Tìm thứ trong tuần</button>
             <div>
                 <input type="text" id="result" name="result" readonly>

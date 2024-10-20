@@ -21,7 +21,7 @@
         .form-group {
             display: flex;
             align-items: center;
-            margin-right: 20px;
+            margin: auto;
         }
         label {
             display: inline-block;
@@ -67,6 +67,13 @@
             color: white; /* Đổi màu chữ cho dễ đọc */
             text-align: center; /* Căn giữa văn bản */
         }
+
+        input[type="submit"]{
+            margin: 0px 30px;  
+        }
+        label.chu{
+            margin-left: 80px;
+        }
     </style>
 </head>
 <body>
@@ -74,14 +81,16 @@
         <form action="" method="POST">
             <h1>Đọc Số</h1>
             <div class = "form-group">
-                <label for="nhapSo">Nhập số : </label>
-                <input type="text" name="nhapSo" id="nhapSo" required>
+                <label for="nhapSo" >Nhập số (0 -> 9): </label>
+                <label for="result" class="chu">Bằng chữ : </label>
             </div>
 
-            <input type="submit" value="=>">
+            
 
             <div class = "form-group">
-                <label for="result">Bằng chữ : </label>
+                
+                <input type="text" name="nhapSo" id="nhapSo" required>
+                <input type="submit" value="=>">
                 <input type="text" name="result" id="result" readonly>
             </div>
         </form>
