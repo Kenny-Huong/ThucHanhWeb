@@ -1,0 +1,69 @@
+Create table hang
+(tenhang varchar(30) PRIMARY KEY,logo longtext);
+
+Create table sanpham
+(id int PRIMARY KEY AUTO_INCREMENT, tensp varchar(100),gia bigint,hinhanh longtext,
+kichthuoc char(80),chieucaoyen char(20),sizebanh char(150),engine varchar(200),
+CC char(20),congsuat varchar(50),CCnhot varchar(50),CCxang varchar(20),phanh varchar(100),gear varchar(20),noidung longtext,tenhang varchar(30));
+
+Create table taikhoan
+(username varchar(100),password varchar(100));
+
+Create table donhang
+(id int PRIMARY KEY AUTO_INCREMENT,tensp varchar(100),soluongdat int,tongtien bigint,tenkh varchar(100),sdt char(11),email varchar(100),diachi longtext,ghichu longtext,trangthai char(30));
+
+alter table sanpham add constraint FK_sp_h foreign key(tenhang) references hang(tenhang); 
+
+
+insert into taikhoan values ('buingocduy','123');
+
+insert into hang values ('HONDA','../HINH/LOGO/HONDA.jpg');
+insert into hang values ('YAMAHA','../HINH/LOGO/YAMAHA.jpg');
+
+insert into sanpham values (NULL,'Click 2020','3600','https://giaxe.2banh.vn/cache/dataupload/products/thumbs/266_204_1577759640-86024cad1e83101d97359d7351051156-390-1.jpg',
+'1919 x 679 x 1062 mm','769 mm','90/80-14 - 100/80- 14 48P Tubeless',N'PGM-Fi, xăng, 4 kỳ, 1 xy-lanh, làm mát bằng dung dịch',
+'150 cc',N'9.7 kW (13.1 PS) / 8500 rpm','0,8L','5,5L',N'Thắng đĩa;Tang trống',N'Vô cấp','','HONDA');
+
+insert into sanpham values (NULL,'Winner X','2000','https://giaxe.2banh.vn/cache/dataupload/products/thumbs/266_204_1605947907-86024cad1e83101d97359d7351051156-423-1.png',
+'2.019 x 727 x 1.088 mm',' 795 mm','90/80-17M/C 46P Sau: 120/70-17M/C 58P',N'PGM-Fi, xăng, 4 kỳ, 1 xy-lanh, làm mát bằng dung dịch',
+'149,1 cm3',N'11,5kW/9.000 vòng/phút',N'1.1 lít khi thay nhớt ; 1.3 lít khi rã máy','4,5L',N'Phanh đĩa;Phanh đĩa',N'6 Cấp','','HONDA');
+
+insert into sanpham values (NULL,'CB150R SF','4000','https://giaxe.2banh.vn/cache/dataupload/products/thumbs/266_204_1555732880-86024cad1e83101d97359d7351051156-419-1.jpg',
+'2.019 x 719 x 1.039 mm',' 797 mm','100/80-17 52P - 130/70-17 62P',N'4 thì, một xilanh, DOHC',
+'149,16 cc',N'16,6 mã lực @ 9.000 vòng/phút',N'1.1 lít khi thay nhớt ; 1.3 lít khi rã máy','12L',N'Phanh đĩa;Phanh đĩa',N'6 Cấp','','HONDA');
+
+insert into sanpham values (NULL,'Air Blade','2150','https://giaxe.2banh.vn/cache/dataupload/products/thumbs/266_204_1607065653-86024cad1e83101d97359d7351051156-447-1.png',
+'1.870mm x 686mm x 1.112mm','775 mm',N'90/80-14M/C 43P - 100/80 -14M/C 48P',N' Xăng, 4 kỳ, 1 xy lanh, làm mát bằng dung dịch',
+'149,3 cm3',N'9,6kW/8.500 vòng/phút',N' 0,8 khi thay nhớt ; 0,9 khi rã máy','4,4L',N'Phanh đĩa ABS;Tang trống',N'Vô cấp','','HONDA');
+
+insert into sanpham values (NULL,'Monkey 2019','3700','https://giaxe.2banh.vn/cache/dataupload/products/thumbs/266_204_1540456181-86024cad1e83101d97359d7351051156-389-1.png',
+'1.712 x 754 x 1.029 mm','776 mm','Maxxis Tortuga: 120/80-12 65J - 130/80-12 69J',N'SOHC xy-lanh đơn, làm mát bằng gió',
+'125cc',N'9,6 mã lực tại 7.000 vòng/phút',N'0.9 lít khi thay nhớt ; 1.1 lít khi rã máy','5,7L',N'Phanh đĩa;Phanh đĩa',N'4 Cấp','','HONDA');
+
+insert into sanpham values (NULL,'SH 2021','3600','https://giaxe.2banh.vn/cache/dataupload/products/thumbs/266_204_1605171539-86024cad1e83101d97359d7351051156-466-1.jpg',
+'2.090 x 739 x 1.129 mm','799 mm','120/80-16 ; 100/80-16',N'PGM-FI, xăng, 4 kỳ, 1 xy-lanh, làm mát bằng dung dịch',
+'124,8cm³ (SH 125i)',N'9,6kW/8.250 vòng/phút (SH 125i)',N'0,8 khi thay nhớt ; 0,9 khi rã máy','7,8L',N'Phanh đĩa ABS;Phanh đĩa',N'Vô cấp','','HONDA');
+
+insert into sanpham values (NULL,'EXCITER 2021','2100','https://giaxe.2banh.vn/cache/dataupload/products/thumbs/266_204_1606209295-86024cad1e83101d97359d7351051156-376-1.png',
+'1.985mm x 670mm x 1.100mm','795 mm','120/80-16 ; 100/80-16',N'PGM-FI, xăng, 4 kỳ, SOHC, 1 xy-lanh, làm mát bằng dung dịch',
+'149,7 cc',N'11,3 kW (15,4 PS) / 8.500 vòng/phút',N'Thay nhớt 0,95 lít - lọc nhớt 1,15 lít','4L',N'Đĩa đơn 245 mm; Đĩa đơn 203 mm',N'5 cấp','','YAMAHA');
+
+insert into sanpham values (NULL,'XSR 155 2020','3600','https://giaxe.2banh.vn/cache/dataupload/products/thumbs/266_204_1578017803-86024cad1e83101d97359d7351051156-435-1.png',
+' 2.000 x 805 x 1.080 (mm)','810 mm','110/70/17 - 140/70/17',N'PGM-FI, xăng, 4 kỳ, SOHC, 1 xy-lanh, làm mát bằng dung dịch',
+'155 cm³',N'14,2 kW (19,3 PS)/ 10.000 vòng/phút​',N'thay nhớt 0.85 Lít (thay lọc nhớt là 0.95 Lít)','10L',N'Phanh đĩa ABS;Phanh đĩa',N'6 cấp','','YAMAHA');
+
+insert into sanpham values (NULL,'LATTE 2021','1700','https://giaxe.2banh.vn/cache/dataupload/products/thumbs/266_204_1584155892-86024cad1e83101d97359d7351051156-422-1.png',
+'1,820 mm x 690 mm x 1,160 mm','790 mm',N'90/90-12 / 100/90-10',N'PGM-FI, xăng, 4 kỳ, 1 xy-lanh, SOHC, làm mát bằng gió',
+'124,8cm³ ',N'6.1 kW (8.3 PS) / 6,500 vòng/phút',N'0,8 khi thay nhớt','6L',N'Phanh đĩa;Phanh tang trống',N'Vô cấp','','YAMAHA');
+
+insert into sanpham values (NULL,'MT-15 2021','3000','https://giaxe.2banh.vn/cache/dataupload/products/thumbs/266_204_1550724726-86024cad1e83101d97359d7351051156-409-1.png',
+'800 x 1.965 x 1.065 mm',' 810 mm','110 / 70-17 M - 140 / 70-17 M',N'PGM-FI, xăng, 4 kỳ, 1 xy-lanh, SOHC, làm mát bằng dung dịch',
+'155cm³',N'19 mã lực tại 10.000 v/ph',N'thay nhớt 0.85 Lít (thay lọc nhớt là 0.95 Lít)','7,8L',N'Đĩa đơn 292 mm;Đĩa dơn 220mm',N'6 cấp','','YAMAHA');
+
+insert into sanpham values (NULL,'NVX 2021','2300','https://giaxe.2banh.vn/cache/dataupload/products/thumbs/266_204_1604392207-86024cad1e83101d97359d7351051156-461-1.png',
+'1.980 mm x 700 mm x 1.150 mm','790 mm','110/80-14M/C 53P - 140/70-14M/C 62P',N'PGM-FI, xăng, Blue Core, 4 thì, 4 van, SOHC, làm mát bằng dung dịch',
+'155,1 cc',N'11,3 kW (15,4 PS)/8.000 vòng/phút',N'0,9  khi thay nhớt' ,'5,5L',N'Phanh đĩa ABS;Phanh đĩa',N'Vô cấp','','YAMAHA');
+
+insert into sanpham values (NULL,'FreeGo 2021','1500','https://giaxe.2banh.vn/cache/dataupload/products/thumbs/266_204_1584157529-86024cad1e83101d97359d7351051156-418-1.png',
+' 1.905 x 690 x 1.110 mm','780 mm','100/90-12 59J - 110/90-12 64L',N'Blue Core, 4 thì, làm mát không khí, 1 xy-lanh',
+'124,8cm³',N'9,4 mã lực @ 8.000 vòng/phút',N'0,84 L','4,2L',N'Đĩa đơn, piston đơn;Tang trống',N'Vô cấp','','YAMAHA')

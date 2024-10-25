@@ -1,0 +1,25 @@
+/*!
+ * Start Bootstrap - Shop Homepage (https://startbootstrap.com/template/shop-homepage)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
+ */
+body {
+  padding-top: 56px;
+}
+        .grid 
+        {
+            max-width: 100%;
+            overflow: auto;
+            display: grid;
+            padding: 50px 50px 50px 30px;
+            grid-template-columns: 50px 50px 50px;           
+            grid-column-gap: 250px;
+            grid-row-gap: 4em;
+        }
+        
+        .tr,td{
+            border: 1px solid gray;
+            padding: 5px;
+        }      
+        
+        
