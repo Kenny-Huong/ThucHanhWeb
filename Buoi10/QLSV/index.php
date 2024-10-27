@@ -42,14 +42,10 @@
     </form>
 
     <?php
-    // Kết nối cơ sở dữ liệu
-    // $servername = "localhost";
-    // $username = "root";
-    // $password = "";
-    // $dbname = "qlsv";  // Tên cơ sở dữ liệu của bạn
+
 
     // Tạo kết nối
-    $conn = new mysqli('localhost:4306', 'root', '', 'qlsv');
+    $conn = new mysqli('localhost:3366', 'root', '', 'qlsv');
 
     // Kiểm tra kết nối
     if ($conn->connect_error) {
