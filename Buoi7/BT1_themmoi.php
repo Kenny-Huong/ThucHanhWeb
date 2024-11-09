@@ -1,6 +1,6 @@
 <?php
 // Kết nối đến cơ sở dữ liệu
-$conn = new mysqli("localhost", "root", "", "QLBH");
+$conn = new mysqli("localhost:3366", "root", "", "loai_hang");
 if ($conn->connect_error) {
     die("Kết nối thất bại: " . $conn->connect_error);
 }
