@@ -10,43 +10,78 @@
         body {
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Full height of the viewport */
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
         }
         .pagination {
-            margin-top: auto; /* Pushes pagination to the bottom */
-            justify-content: center; /* Center the pagination */
+            margin-top: auto;
+            justify-content: center;
+        }
+        .page-container {
+            display: none; /* Ẩn tất cả các trang ban đầu */
+            margin-top: 20px;
+        }
+        .page {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .line {
+            border-bottom: 1px solid #000; /* Dòng kẻ màu đen */
+            padding: 10px 0;
+            font-size: 16px;
+            line-height: 1.5;
+            cursor: text;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Your main content here -->
-        <div class="row">
-            <div class="col">
-                <h1>Your Content Here</h1>
-                <p>This is where your main content would go.</p>
+        <h1>Nguyễn Văn Hướng - DHTI15A5HN - 21103100115</h1>
+        <h2>Quản lý trang - Class Page</h2>
+        
+        <!-- 4 trang, mỗi trang 8 dòng -->
+        <?php for ($page = 1; $page <= 4; $page++): ?>
+            <div class="page-container" id="page-<?php echo $page; ?>">
+                <div class="page">
+                    <?php for ($line = 1; $line <= 8; $line++): ?>
+                        <div class="line" contenteditable="true"></div>
+                    <?php endfor; ?>
+                </div>
             </div>
-        </div>
+        <?php endfor; ?>
 
+        <!-- Phân trang -->
         <div class="pagination">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
+                    <?php for ($page = 1; $page <= 4; $page++): ?>
+                        <li class="page-item">
+                            <a class="page-link" href="#" onclick="showPage(<?php echo $page; ?>)"><?php echo $page; ?></a>
+                        </li>
+                    <?php endfor; ?>
                 </ul>
             </nav>
         </div>
     </div>
+
+    <script>
+        // Hiển thị trang đầu tiên mặc định
+        document.getElementById("page-1").style.display = "block";
+
+        // Hàm hiển thị trang dựa trên số trang
+        function showPage(pageNumber) {
+            // Ẩn tất cả các trang
+            const pages = document.querySelectorAll(".page-container");
+            pages.forEach(page => page.style.display = "none");
+
+            // Hiển thị trang đã chọn
+            document.getElementById("page-" + pageNumber).style.display = "block";
+        }
+    </script>
 </body>
 </html>

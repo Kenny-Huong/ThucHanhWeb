@@ -59,7 +59,6 @@ if (!$result) {
                     </td>
                     <td><?php echo $row['DIA_CHI']; ?></td>
                     <td><?php echo $row['DIEN_THOAI']; ?></td>
-                    
                 </tr>
             <?php endwhile; ?>
         </table>
