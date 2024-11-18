@@ -14,15 +14,22 @@ $query = $pdo->prepare("SELECT sua.*, hang_sua.Ten_hang_sua, loai_sua.Ten_loai
                         JOIN hang_sua ON sua.Ma_hang_sua = hang_sua.Ma_hang_sua 
                         JOIN loai_sua ON sua.Ma_loai_sua = loai_sua.Ma_loai_sua 
                         LIMIT :offset, :itemsPerPage");
-
-$query->bindParam(':offset', $offset, PDO::PARAM_INT);
-$query->bindParam(':itemsPerPage', $itemsPerPage, PDO::PARAM_INT);
+$query->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+$query->bindValue(':itemsPerPage', (int)$itemsPerPage, PDO::PARAM_INT);
 $query->execute();
 $products = $query->fetchAll(PDO::FETCH_ASSOC);
 
-// Tính tổng số trang
-$totalItems = $pdo->query("SELECT COUNT(*) FROM sua")->fetchColumn();
+// Kiểm tra nếu có dữ liệu trả về
+if (empty($products)) {
+    echo "Không có sản phẩm nào được tìm thấy!";
+    exit;
+}
+
+// Tính tổng số sản phẩm trong cơ sở dữ liệu
+$totalItemsQuery = $pdo->query("SELECT COUNT(*) FROM sua");
+$totalItems = $totalItemsQuery->fetchColumn();  // Đảm bảo truy vấn trả về số lượng chính xác
 $totalPages = ceil($totalItems / $itemsPerPage);
+
 ?>
 
 <!DOCTYPE html>
@@ -46,9 +53,9 @@ $totalPages = ceil($totalItems / $itemsPerPage);
         <table class="table">
             <thead>
                 <tr>
-                <!-- Hàng riêng đứng trên đầu, không có cột, chỉ có một ô duy nhất -->
                     <th colspan="2" class="header-row">
                         <h2>THÔNG TIN SẢN PHẨM</h2>
+                        <?php echo "Tổng số sản phẩm: " . $totalItems; ?>
                     </th>
                 </tr>
             </thead>
@@ -61,7 +68,7 @@ $totalPages = ceil($totalItems / $itemsPerPage);
                             <strong><?= htmlspecialchars($product['Ten_sua']) ?></strong> 
                             <br> Nhà sản xuất : <?= $product['Ten_hang_sua'] ?> <br>
                             <?= $product['Ten_loai'] ?> - 
-                            <?= $product['Trong_luong'] ?> -
+                            <?= $product['Trong_luong'] ?> - 
                             <?= number_format($product['Don_gia'], 0, ',', '.') ?> VND
                         </td>
                     </tr>
